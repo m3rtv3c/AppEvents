@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="23a05ea93402499682b44bac125740a4" Name="Diagram1" >
+        <EntityTypeShape EntityType="Model1.events" Width="1.5" PointX="3" PointY="8.625" />
+        <EntityTypeShape EntityType="Model1.FederalDistricts" Width="1.5" PointX="7.5" PointY="0.75" />
+        <EntityTypeShape EntityType="Model1.message_categories" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="Model1.message_processing" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="Model1.messages" Width="1.5" PointX="7.5" PointY="3.75" />
+        <EntityTypeShape EntityType="Model1.popular_group" Width="1.5" PointX="3" PointY="12" />
+        <EntityTypeShape EntityType="Model1.popular_messages" Width="1.5" PointX="5.25" PointY="11.75" />
+        <EntityTypeShape EntityType="Model1.staff" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="Model1.staff_event" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="Model1.status_message" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="Model1.type_message" Width="1.5" PointX="5.25" PointY="8.5" />
+        <EntityTypeShape EntityType="Model1.type_staff" Width="1.5" PointX="0.75" PointY="1.75" />
+        <EntityTypeShape EntityType="Model1.user" Width="1.5" PointX="9.75" PointY="4.125" />
+        <AssociationConnector Association="Model1.FK_events_staff_event" />
+        <AssociationConnector Association="Model1.FK_user_FederalDistricts" />
+        <AssociationConnector Association="Model1.FK_Messages_Message_Categories1" />
+        <AssociationConnector Association="Model1.FK_Message_Processing_Staff" />
+        <AssociationConnector Association="Model1.FK_Message_Processing_Status_Message" />
+        <AssociationConnector Association="Model1.FK_Messages_Message_Processing" />
+        <AssociationConnector Association="Model1.FK_messages_popular_messages" />
+        <AssociationConnector Association="Model1.FK_Messages_Type_Message" />
+        <AssociationConnector Association="Model1.FK_User_Messages" />
+        <AssociationConnector Association="Model1.FK_popular_messages_popular_group" />
+        <AssociationConnector Association="Model1.FK_staff_staff_event" />
+        <AssociationConnector Association="Model1.FK_staff_type_staff" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

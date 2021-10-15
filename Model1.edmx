@@ -1,0 +1,864 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="events">
+          <Key>
+            <PropertyRef Name="Id_events" />
+          </Key>
+          <Property Name="Id_events" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="datatime_begin" Type="datetime" Nullable="false" />
+          <Property Name="datatime_end" Type="datetime" Nullable="false" />
+          <Property Name="year" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FederalDistricts">
+          <Key>
+            <PropertyRef Name="ID_Federal_Districts" />
+          </Key>
+          <Property Name="ID_Federal_Districts" Type="int" Nullable="false" />
+          <Property Name="Federal_Districts" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="message_categories">
+          <Key>
+            <PropertyRef Name="Id_message_categories" />
+          </Key>
+          <Property Name="Id_message_categories" Type="int" Nullable="false" />
+          <Property Name="message_categories" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="message_processing">
+          <Key>
+            <PropertyRef Name="Id_message_processing" />
+          </Key>
+          <Property Name="Id_message_processing" Type="int" Nullable="false" />
+          <Property Name="Id_message_processing_staff" Type="int" Nullable="false" />
+          <Property Name="Id_message_processing_message" Type="int" Nullable="false" />
+          <Property Name="Id_message_processing_status_message" Type="int" Nullable="false" />
+          <Property Name="answer_comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="Id_message" />
+          </Key>
+          <Property Name="Id_message" Type="int" Nullable="false" />
+          <Property Name="datatime" Type="datetime" Nullable="false" />
+          <Property Name="id_message_user" Type="int" Nullable="false" />
+          <Property Name="Id_message_type_message" Type="int" Nullable="false" />
+          <Property Name="message_text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id_message_event" Type="int" Nullable="false" />
+          <Property Name="media_content" Type="varbinary(max)" />
+          <Property Name="processed" Type="bit" Nullable="false" />
+          <Property Name="Id_message_message_categories" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="popular_group">
+          <Key>
+            <PropertyRef Name="Id_popular_group" />
+          </Key>
+          <Property Name="Id_popular_group" Type="int" Nullable="false" />
+          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="Id_popular_group_event" Type="int" />
+        </EntityType>
+        <EntityType Name="popular_messages">
+          <Key>
+            <PropertyRef Name="Id_popular_messages" />
+          </Key>
+          <Property Name="Id_popular_messages" Type="int" Nullable="false" />
+          <Property Name="Id_popular_messages_message" Type="int" />
+          <Property Name="Id_popular_messages_popular_group" Type="int" />
+          <Property Name="vote" Type="int" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="Id_staff" />
+          </Key>
+          <Property Name="Id_staff" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="second_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="patronymic" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Log" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Pass" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Telephone" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Id_staff_type_staff" Type="int" Nullable="false" />
+          <Property Name="online" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="staff_event">
+          <Key>
+            <PropertyRef Name="Id_staff_event" />
+          </Key>
+          <Property Name="Id_staff_event" Type="int" Nullable="false" />
+          <Property Name="Id_staff_event_staff" Type="int" Nullable="false" />
+          <Property Name="Id_staff_event_event" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="status_message">
+          <Key>
+            <PropertyRef Name="Id_status_message" />
+          </Key>
+          <Property Name="Id_status_message" Type="int" Nullable="false" />
+          <Property Name="status_message" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="type_message">
+          <Key>
+            <PropertyRef Name="Id_type_message" />
+          </Key>
+          <Property Name="Id_type_message" Type="int" Nullable="false" />
+          <Property Name="type_message" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_staff">
+          <Key>
+            <PropertyRef Name="Id_type_staff" />
+          </Key>
+          <Property Name="Id_type_staff" Type="int" Nullable="false" />
+          <Property Name="type_staff" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id_user" />
+          </Key>
+          <Property Name="Id_user" Type="int" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar(max)" />
+          <Property Name="second_name" Type="nvarchar(max)" />
+          <Property Name="Patronomyc" Type="nvarchar(max)" />
+          <Property Name="Telephone" Type="varbinary(max)" />
+          <Property Name="Email" Type="nvarchar(max)" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Id_user_federal_districts" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_events_staff_event">
+          <End Role="staff_event" Type="Self.staff_event" Multiplicity="1" />
+          <End Role="events" Type="Self.events" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="staff_event">
+              <PropertyRef Name="Id_staff_event" />
+            </Principal>
+            <Dependent Role="events">
+              <PropertyRef Name="Id_events" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Processing_Staff">
+          <End Role="staff" Type="Self.staff" Multiplicity="1" />
+          <End Role="message_processing" Type="Self.message_processing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="Id_staff" />
+            </Principal>
+            <Dependent Role="message_processing">
+              <PropertyRef Name="Id_message_processing_staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Processing_Status_Message">
+          <End Role="status_message" Type="Self.status_message" Multiplicity="1" />
+          <End Role="message_processing" Type="Self.message_processing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_message">
+              <PropertyRef Name="Id_status_message" />
+            </Principal>
+            <Dependent Role="message_processing">
+              <PropertyRef Name="Id_message_processing_status_message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Message_Categories1">
+          <End Role="message_categories" Type="Self.message_categories" Multiplicity="1" />
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="message_categories">
+              <PropertyRef Name="Id_message_categories" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Id_message_message_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Message_Processing">
+          <End Role="message_processing" Type="Self.message_processing" Multiplicity="1" />
+          <End Role="messages" Type="Self.messages" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="message_processing">
+              <PropertyRef Name="Id_message_processing" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Id_message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_popular_messages">
+          <End Role="popular_messages" Type="Self.popular_messages" Multiplicity="1" />
+          <End Role="messages" Type="Self.messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="popular_messages">
+              <PropertyRef Name="Id_popular_messages" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Id_message_message_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Type_Message">
+          <End Role="type_message" Type="Self.type_message" Multiplicity="1" />
+          <End Role="messages" Type="Self.messages" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="type_message">
+              <PropertyRef Name="Id_type_message" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Id_message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_popular_messages_popular_group">
+          <End Role="popular_group" Type="Self.popular_group" Multiplicity="0..1" />
+          <End Role="popular_messages" Type="Self.popular_messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="popular_group">
+              <PropertyRef Name="Id_popular_group" />
+            </Principal>
+            <Dependent Role="popular_messages">
+              <PropertyRef Name="Id_popular_messages_popular_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_staff_event">
+          <End Role="staff_event" Type="Self.staff_event" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff_event">
+              <PropertyRef Name="Id_staff_event" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="Id_staff_type_staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_type_staff">
+          <End Role="type_staff" Type="Self.type_staff" Multiplicity="1" />
+          <End Role="staff" Type="Self.staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_staff">
+              <PropertyRef Name="Id_type_staff" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="Id_staff_type_staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_FederalDistricts">
+          <End Role="FederalDistricts" Type="Self.FederalDistricts" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FederalDistricts">
+              <PropertyRef Name="ID_Federal_Districts" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Id_user_federal_districts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Messages">
+          <End Role="messages" Type="Self.messages" Multiplicity="1" />
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="messages">
+              <PropertyRef Name="Id_message" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Model1StoreContainer">
+          <EntitySet Name="events" EntityType="Self.events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FederalDistricts" EntityType="Self.FederalDistricts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="message_categories" EntityType="Self.message_categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="message_processing" EntityType="Self.message_processing" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="messages" EntityType="Self.messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="popular_group" EntityType="Self.popular_group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="popular_messages" EntityType="Self.popular_messages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="staff" EntityType="Self.staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="staff_event" EntityType="Self.staff_event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="status_message" EntityType="Self.status_message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_message" EntityType="Self.type_message" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_staff" EntityType="Self.type_staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_events_staff_event" Association="Self.FK_events_staff_event">
+            <End Role="staff_event" EntitySet="staff_event" />
+            <End Role="events" EntitySet="events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Processing_Staff" Association="Self.FK_Message_Processing_Staff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="message_processing" EntitySet="message_processing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Processing_Status_Message" Association="Self.FK_Message_Processing_Status_Message">
+            <End Role="status_message" EntitySet="status_message" />
+            <End Role="message_processing" EntitySet="message_processing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Message_Categories1" Association="Self.FK_Messages_Message_Categories1">
+            <End Role="message_categories" EntitySet="message_categories" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Message_Processing" Association="Self.FK_Messages_Message_Processing">
+            <End Role="message_processing" EntitySet="message_processing" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_popular_messages" Association="Self.FK_messages_popular_messages">
+            <End Role="popular_messages" EntitySet="popular_messages" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Type_Message" Association="Self.FK_Messages_Type_Message">
+            <End Role="type_message" EntitySet="type_message" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_popular_messages_popular_group" Association="Self.FK_popular_messages_popular_group">
+            <End Role="popular_group" EntitySet="popular_group" />
+            <End Role="popular_messages" EntitySet="popular_messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_staff_event" Association="Self.FK_staff_staff_event">
+            <End Role="staff_event" EntitySet="staff_event" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_type_staff" Association="Self.FK_staff_type_staff">
+            <End Role="type_staff" EntitySet="type_staff" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_FederalDistricts" Association="Self.FK_user_FederalDistricts">
+            <End Role="FederalDistricts" EntitySet="FederalDistricts" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Messages" Association="Self.FK_User_Messages">
+            <End Role="messages" EntitySet="messages" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="events" EntityType="Model1.events" />
+          <EntitySet Name="FederalDistricts" EntityType="Model1.FederalDistricts" />
+          <EntitySet Name="message_categories" EntityType="Model1.message_categories" />
+          <EntitySet Name="message_processing" EntityType="Model1.message_processing" />
+          <EntitySet Name="messages" EntityType="Model1.messages" />
+          <EntitySet Name="popular_group" EntityType="Model1.popular_group" />
+          <EntitySet Name="popular_messages" EntityType="Model1.popular_messages" />
+          <EntitySet Name="staff" EntityType="Model1.staff" />
+          <EntitySet Name="staff_event" EntityType="Model1.staff_event" />
+          <EntitySet Name="status_message" EntityType="Model1.status_message" />
+          <EntitySet Name="type_message" EntityType="Model1.type_message" />
+          <EntitySet Name="type_staff" EntityType="Model1.type_staff" />
+          <EntitySet Name="user" EntityType="Model1.user" />
+          <AssociationSet Name="FK_events_staff_event" Association="Model1.FK_events_staff_event">
+            <End Role="staff_event" EntitySet="staff_event" />
+            <End Role="events" EntitySet="events" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_FederalDistricts" Association="Model1.FK_user_FederalDistricts">
+            <End Role="FederalDistricts" EntitySet="FederalDistricts" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Message_Categories1" Association="Model1.FK_Messages_Message_Categories1">
+            <End Role="message_categories" EntitySet="message_categories" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Processing_Staff" Association="Model1.FK_Message_Processing_Staff">
+            <End Role="staff" EntitySet="staff" />
+            <End Role="message_processing" EntitySet="message_processing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Message_Processing_Status_Message" Association="Model1.FK_Message_Processing_Status_Message">
+            <End Role="status_message" EntitySet="status_message" />
+            <End Role="message_processing" EntitySet="message_processing" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Message_Processing" Association="Model1.FK_Messages_Message_Processing">
+            <End Role="message_processing" EntitySet="message_processing" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_messages_popular_messages" Association="Model1.FK_messages_popular_messages">
+            <End Role="popular_messages" EntitySet="popular_messages" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Messages_Type_Message" Association="Model1.FK_Messages_Type_Message">
+            <End Role="type_message" EntitySet="type_message" />
+            <End Role="messages" EntitySet="messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Messages" Association="Model1.FK_User_Messages">
+            <End Role="messages" EntitySet="messages" />
+            <End Role="user" EntitySet="user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_popular_messages_popular_group" Association="Model1.FK_popular_messages_popular_group">
+            <End Role="popular_group" EntitySet="popular_group" />
+            <End Role="popular_messages" EntitySet="popular_messages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_staff_event" Association="Model1.FK_staff_staff_event">
+            <End Role="staff_event" EntitySet="staff_event" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_staff_type_staff" Association="Model1.FK_staff_type_staff">
+            <End Role="type_staff" EntitySet="type_staff" />
+            <End Role="staff" EntitySet="staff" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="events">
+          <Key>
+            <PropertyRef Name="Id_events" />
+          </Key>
+          <Property Name="Id_events" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="datatime_begin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="datatime_end" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="staff_event" Relationship="Model1.FK_events_staff_event" FromRole="events" ToRole="staff_event" />
+        </EntityType>
+        <EntityType Name="FederalDistricts">
+          <Key>
+            <PropertyRef Name="ID_Federal_Districts" />
+          </Key>
+          <Property Name="ID_Federal_Districts" Type="Int32" Nullable="false" />
+          <Property Name="Federal_Districts" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user" Relationship="Model1.FK_user_FederalDistricts" FromRole="FederalDistricts" ToRole="user" />
+        </EntityType>
+        <EntityType Name="message_categories">
+          <Key>
+            <PropertyRef Name="Id_message_categories" />
+          </Key>
+          <Property Name="Id_message_categories" Type="Int32" Nullable="false" />
+          <Property Name="message_categories1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="messages" Relationship="Model1.FK_Messages_Message_Categories1" FromRole="message_categories" ToRole="messages" />
+        </EntityType>
+        <EntityType Name="message_processing">
+          <Key>
+            <PropertyRef Name="Id_message_processing" />
+          </Key>
+          <Property Name="Id_message_processing" Type="Int32" Nullable="false" />
+          <Property Name="Id_message_processing_staff" Type="Int32" Nullable="false" />
+          <Property Name="Id_message_processing_message" Type="Int32" Nullable="false" />
+          <Property Name="Id_message_processing_status_message" Type="Int32" Nullable="false" />
+          <Property Name="answer_comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="staff" Relationship="Model1.FK_Message_Processing_Staff" FromRole="message_processing" ToRole="staff" />
+          <NavigationProperty Name="status_message" Relationship="Model1.FK_Message_Processing_Status_Message" FromRole="message_processing" ToRole="status_message" />
+          <NavigationProperty Name="messages" Relationship="Model1.FK_Messages_Message_Processing" FromRole="message_processing" ToRole="messages" />
+        </EntityType>
+        <EntityType Name="messages">
+          <Key>
+            <PropertyRef Name="Id_message" />
+          </Key>
+          <Property Name="Id_message" Type="Int32" Nullable="false" />
+          <Property Name="datatime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="id_message_user" Type="Int32" Nullable="false" />
+          <Property Name="Id_message_type_message" Type="Int32" Nullable="false" />
+          <Property Name="message_text" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_message_event" Type="Int32" Nullable="false" />
+          <Property Name="media_content" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="processed" Type="Boolean" Nullable="false" />
+          <Property Name="Id_message_message_categories" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="message_categories" Relationship="Model1.FK_Messages_Message_Categories1" FromRole="messages" ToRole="message_categories" />
+          <NavigationProperty Name="message_processing" Relationship="Model1.FK_Messages_Message_Processing" FromRole="messages" ToRole="message_processing" />
+          <NavigationProperty Name="popular_messages" Relationship="Model1.FK_messages_popular_messages" FromRole="messages" ToRole="popular_messages" />
+          <NavigationProperty Name="type_message" Relationship="Model1.FK_Messages_Type_Message" FromRole="messages" ToRole="type_message" />
+          <NavigationProperty Name="user" Relationship="Model1.FK_User_Messages" FromRole="messages" ToRole="user" />
+        </EntityType>
+        <EntityType Name="popular_group">
+          <Key>
+            <PropertyRef Name="Id_popular_group" />
+          </Key>
+          <Property Name="Id_popular_group" Type="Int32" Nullable="false" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_popular_group_event" Type="Int32" />
+          <NavigationProperty Name="popular_messages" Relationship="Model1.FK_popular_messages_popular_group" FromRole="popular_group" ToRole="popular_messages" />
+        </EntityType>
+        <EntityType Name="popular_messages">
+          <Key>
+            <PropertyRef Name="Id_popular_messages" />
+          </Key>
+          <Property Name="Id_popular_messages" Type="Int32" Nullable="false" />
+          <Property Name="Id_popular_messages_message" Type="Int32" />
+          <Property Name="Id_popular_messages_popular_group" Type="Int32" />
+          <Property Name="vote" Type="Int32" />
+          <NavigationProperty Name="messages" Relationship="Model1.FK_messages_popular_messages" FromRole="popular_messages" ToRole="messages" />
+          <NavigationProperty Name="popular_group" Relationship="Model1.FK_popular_messages_popular_group" FromRole="popular_messages" ToRole="popular_group" />
+        </EntityType>
+        <EntityType Name="staff">
+          <Key>
+            <PropertyRef Name="Id_staff" />
+          </Key>
+          <Property Name="Id_staff" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="second_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="patronymic" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Log" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Pass" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Id_staff_type_staff" Type="Int32" Nullable="false" />
+          <Property Name="online" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="message_processing" Relationship="Model1.FK_Message_Processing_Staff" FromRole="staff" ToRole="message_processing" />
+          <NavigationProperty Name="staff_event" Relationship="Model1.FK_staff_staff_event" FromRole="staff" ToRole="staff_event" />
+          <NavigationProperty Name="type_staff" Relationship="Model1.FK_staff_type_staff" FromRole="staff" ToRole="type_staff" />
+        </EntityType>
+        <EntityType Name="staff_event">
+          <Key>
+            <PropertyRef Name="Id_staff_event" />
+          </Key>
+          <Property Name="Id_staff_event" Type="Int32" Nullable="false" />
+          <Property Name="Id_staff_event_staff" Type="Int32" Nullable="false" />
+          <Property Name="Id_staff_event_event" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="events" Relationship="Model1.FK_events_staff_event" FromRole="staff_event" ToRole="events" />
+          <NavigationProperty Name="staff" Relationship="Model1.FK_staff_staff_event" FromRole="staff_event" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="status_message">
+          <Key>
+            <PropertyRef Name="Id_status_message" />
+          </Key>
+          <Property Name="Id_status_message" Type="Int32" Nullable="false" />
+          <Property Name="status_message1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="message_processing" Relationship="Model1.FK_Message_Processing_Status_Message" FromRole="status_message" ToRole="message_processing" />
+        </EntityType>
+        <EntityType Name="type_message">
+          <Key>
+            <PropertyRef Name="Id_type_message" />
+          </Key>
+          <Property Name="Id_type_message" Type="Int32" Nullable="false" />
+          <Property Name="type_message1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="messages" Relationship="Model1.FK_Messages_Type_Message" FromRole="type_message" ToRole="messages" />
+        </EntityType>
+        <EntityType Name="type_staff">
+          <Key>
+            <PropertyRef Name="Id_type_staff" />
+          </Key>
+          <Property Name="Id_type_staff" Type="Int32" Nullable="false" />
+          <Property Name="type_staff1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="staff" Relationship="Model1.FK_staff_type_staff" FromRole="type_staff" ToRole="staff" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id_user" />
+          </Key>
+          <Property Name="Id_user" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="second_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Patronomyc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Id_user_federal_districts" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FederalDistricts" Relationship="Model1.FK_user_FederalDistricts" FromRole="user" ToRole="FederalDistricts" />
+          <NavigationProperty Name="messages" Relationship="Model1.FK_User_Messages" FromRole="user" ToRole="messages" />
+        </EntityType>
+        <Association Name="FK_events_staff_event">
+          <End Type="Model1.staff_event" Role="staff_event" Multiplicity="1" />
+          <End Type="Model1.events" Role="events" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="staff_event">
+              <PropertyRef Name="Id_staff_event" />
+            </Principal>
+            <Dependent Role="events">
+              <PropertyRef Name="Id_events" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_FederalDistricts">
+          <End Type="Model1.FederalDistricts" Role="FederalDistricts" Multiplicity="1" />
+          <End Type="Model1.user" Role="user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FederalDistricts">
+              <PropertyRef Name="ID_Federal_Districts" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Id_user_federal_districts" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Message_Categories1">
+          <End Type="Model1.message_categories" Role="message_categories" Multiplicity="1" />
+          <End Type="Model1.messages" Role="messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="message_categories">
+              <PropertyRef Name="Id_message_categories" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Id_message_message_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Processing_Staff">
+          <End Type="Model1.staff" Role="staff" Multiplicity="1" />
+          <End Type="Model1.message_processing" Role="message_processing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff">
+              <PropertyRef Name="Id_staff" />
+            </Principal>
+            <Dependent Role="message_processing">
+              <PropertyRef Name="Id_message_processing_staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Message_Processing_Status_Message">
+          <End Type="Model1.status_message" Role="status_message" Multiplicity="1" />
+          <End Type="Model1.message_processing" Role="message_processing" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="status_message">
+              <PropertyRef Name="Id_status_message" />
+            </Principal>
+            <Dependent Role="message_processing">
+              <PropertyRef Name="Id_message_processing_status_message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Message_Processing">
+          <End Type="Model1.message_processing" Role="message_processing" Multiplicity="1" />
+          <End Type="Model1.messages" Role="messages" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="message_processing">
+              <PropertyRef Name="Id_message_processing" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Id_message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_messages_popular_messages">
+          <End Type="Model1.popular_messages" Role="popular_messages" Multiplicity="1" />
+          <End Type="Model1.messages" Role="messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="popular_messages">
+              <PropertyRef Name="Id_popular_messages" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Id_message_message_categories" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Messages_Type_Message">
+          <End Type="Model1.type_message" Role="type_message" Multiplicity="1" />
+          <End Type="Model1.messages" Role="messages" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="type_message">
+              <PropertyRef Name="Id_type_message" />
+            </Principal>
+            <Dependent Role="messages">
+              <PropertyRef Name="Id_message" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Messages">
+          <End Type="Model1.messages" Role="messages" Multiplicity="1" />
+          <End Type="Model1.user" Role="user" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="messages">
+              <PropertyRef Name="Id_message" />
+            </Principal>
+            <Dependent Role="user">
+              <PropertyRef Name="Id_user" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_popular_messages_popular_group">
+          <End Type="Model1.popular_group" Role="popular_group" Multiplicity="0..1" />
+          <End Type="Model1.popular_messages" Role="popular_messages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="popular_group">
+              <PropertyRef Name="Id_popular_group" />
+            </Principal>
+            <Dependent Role="popular_messages">
+              <PropertyRef Name="Id_popular_messages_popular_group" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_staff_event">
+          <End Type="Model1.staff_event" Role="staff_event" Multiplicity="1" />
+          <End Type="Model1.staff" Role="staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="staff_event">
+              <PropertyRef Name="Id_staff_event" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="Id_staff_type_staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_staff_type_staff">
+          <End Type="Model1.type_staff" Role="type_staff" Multiplicity="1" />
+          <End Type="Model1.staff" Role="staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_staff">
+              <PropertyRef Name="Id_type_staff" />
+            </Principal>
+            <Dependent Role="staff">
+              <PropertyRef Name="Id_staff_type_staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Model1" />
+        <Alias Key="Target" Value="Model1.Store" />
+        <EntityContainerMapping CdmEntityContainer="Model1Container" StorageEntityContainer="Model1StoreContainer">
+          <EntitySetMapping Name="events">
+            <EntityTypeMapping TypeName="Model1.events">
+              <MappingFragment StoreEntitySet="events">
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="datatime_end" ColumnName="datatime_end" />
+                <ScalarProperty Name="datatime_begin" ColumnName="datatime_begin" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Id_events" ColumnName="Id_events" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FederalDistricts">
+            <EntityTypeMapping TypeName="Model1.FederalDistricts">
+              <MappingFragment StoreEntitySet="FederalDistricts">
+                <ScalarProperty Name="Federal_Districts" ColumnName="Federal_Districts" />
+                <ScalarProperty Name="ID_Federal_Districts" ColumnName="ID_Federal_Districts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="message_categories">
+            <EntityTypeMapping TypeName="Model1.message_categories">
+              <MappingFragment StoreEntitySet="message_categories">
+                <ScalarProperty Name="message_categories1" ColumnName="message_categories" />
+                <ScalarProperty Name="Id_message_categories" ColumnName="Id_message_categories" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="message_processing">
+            <EntityTypeMapping TypeName="Model1.message_processing">
+              <MappingFragment StoreEntitySet="message_processing">
+                <ScalarProperty Name="answer_comment" ColumnName="answer_comment" />
+                <ScalarProperty Name="Id_message_processing_status_message" ColumnName="Id_message_processing_status_message" />
+                <ScalarProperty Name="Id_message_processing_message" ColumnName="Id_message_processing_message" />
+                <ScalarProperty Name="Id_message_processing_staff" ColumnName="Id_message_processing_staff" />
+                <ScalarProperty Name="Id_message_processing" ColumnName="Id_message_processing" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messages">
+            <EntityTypeMapping TypeName="Model1.messages">
+              <MappingFragment StoreEntitySet="messages">
+                <ScalarProperty Name="Id_message_message_categories" ColumnName="Id_message_message_categories" />
+                <ScalarProperty Name="processed" ColumnName="processed" />
+                <ScalarProperty Name="media_content" ColumnName="media_content" />
+                <ScalarProperty Name="Id_message_event" ColumnName="Id_message_event" />
+                <ScalarProperty Name="message_text" ColumnName="message_text" />
+                <ScalarProperty Name="Id_message_type_message" ColumnName="Id_message_type_message" />
+                <ScalarProperty Name="id_message_user" ColumnName="id_message_user" />
+                <ScalarProperty Name="datatime" ColumnName="datatime" />
+                <ScalarProperty Name="Id_message" ColumnName="Id_message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="popular_group">
+            <EntityTypeMapping TypeName="Model1.popular_group">
+              <MappingFragment StoreEntitySet="popular_group">
+                <ScalarProperty Name="Id_popular_group_event" ColumnName="Id_popular_group_event" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="Id_popular_group" ColumnName="Id_popular_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="popular_messages">
+            <EntityTypeMapping TypeName="Model1.popular_messages">
+              <MappingFragment StoreEntitySet="popular_messages">
+                <ScalarProperty Name="vote" ColumnName="vote" />
+                <ScalarProperty Name="Id_popular_messages_popular_group" ColumnName="Id_popular_messages_popular_group" />
+                <ScalarProperty Name="Id_popular_messages_message" ColumnName="Id_popular_messages_message" />
+                <ScalarProperty Name="Id_popular_messages" ColumnName="Id_popular_messages" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staff">
+            <EntityTypeMapping TypeName="Model1.staff">
+              <MappingFragment StoreEntitySet="staff">
+                <ScalarProperty Name="online" ColumnName="online" />
+                <ScalarProperty Name="Id_staff_type_staff" ColumnName="Id_staff_type_staff" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Log" ColumnName="Log" />
+                <ScalarProperty Name="patronymic" ColumnName="patronymic" />
+                <ScalarProperty Name="second_name" ColumnName="second_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="Id_staff" ColumnName="Id_staff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="staff_event">
+            <EntityTypeMapping TypeName="Model1.staff_event">
+              <MappingFragment StoreEntitySet="staff_event">
+                <ScalarProperty Name="Id_staff_event_event" ColumnName="Id_staff_event_event" />
+                <ScalarProperty Name="Id_staff_event_staff" ColumnName="Id_staff_event_staff" />
+                <ScalarProperty Name="Id_staff_event" ColumnName="Id_staff_event" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="status_message">
+            <EntityTypeMapping TypeName="Model1.status_message">
+              <MappingFragment StoreEntitySet="status_message">
+                <ScalarProperty Name="status_message1" ColumnName="status_message" />
+                <ScalarProperty Name="Id_status_message" ColumnName="Id_status_message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_message">
+            <EntityTypeMapping TypeName="Model1.type_message">
+              <MappingFragment StoreEntitySet="type_message">
+                <ScalarProperty Name="type_message1" ColumnName="type_message" />
+                <ScalarProperty Name="Id_type_message" ColumnName="Id_type_message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_staff">
+            <EntityTypeMapping TypeName="Model1.type_staff">
+              <MappingFragment StoreEntitySet="type_staff">
+                <ScalarProperty Name="type_staff1" ColumnName="type_staff" />
+                <ScalarProperty Name="Id_type_staff" ColumnName="Id_type_staff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="Model1.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="Id_user_federal_districts" ColumnName="Id_user_federal_districts" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Patronomyc" ColumnName="Patronomyc" />
+                <ScalarProperty Name="second_name" ColumnName="second_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="Id_user" ColumnName="Id_user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
